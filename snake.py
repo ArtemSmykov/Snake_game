@@ -145,7 +145,7 @@ def start_the_game():
         timer.tick(3+speed)
 
 menu = pygame_menu.Menu('Welcome', 400, 300,
-                       theme=pygame_menu.themes.THEME_BLUE)
-menu.add.button('Play', start_the_game)
-menu.add.button('Quit', pygame_menu.events.EXIT)
-menu.mainloop(screen)
+                       theme=pygame_menu.themes.THEME_BLUE) #
+menu.add.button('Play', start_the_game)                     # взято из документации
+menu.add.button('Quit', pygame_menu.events.EXIT)            # к pygame-menu
+menu.mainloop(screen)                                       #
