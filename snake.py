@@ -2,27 +2,12 @@ import pygame
 import sys
 import random
 import pygame_menu
-pygame.init()
 
-SIZE_BLOCK = 20
-FRAME_COLOR = (128, 128, 128)
-WHITE = (255, 255, 255)
-BLUE = (204, 255, 255)
-RED = (224, 0, 0)
-COUNT_BLOCKS = 20
-HEADER_COLOR = (47, 53, 60)
-SNAKE_COLOR = (0, 102, 0)
-HEADER_MARGIN = 70
-MARGIN = 1
-size = [SIZE_BLOCK*COUNT_BLOCKS + 2*SIZE_BLOCK + MARGIN*COUNT_BLOCKS,
-        SIZE_BLOCK*COUNT_BLOCKS + 2*SIZE_BLOCK + MARGIN*COUNT_BLOCKS + HEADER_MARGIN]
-print(size)
-screen = pygame.display.set_mode(size)
-pygame.display.set_caption('Змейка')
-timer = pygame.time.Clock()
-courier = pygame.font.SysFont('courier', 50)
 
 class SnakeBlock:
+    '''
+    класс змеи
+    '''
     def __init__(self, x, y):
         '''
          инициализация атрибутов класса, сохраняет x и y
@@ -83,7 +68,6 @@ def start_the_game():
 
     while True:
         for event in pygame.event.get():
-            '''получение всех событий'''
             if event.type == pygame.QUIT:
                 pygame.quit()
                 print('exit')
@@ -144,8 +128,28 @@ def start_the_game():
         snake_blocks.pop(0)
         timer.tick(3+speed)
 
-menu = pygame_menu.Menu('Welcome', 400, 300,
-                       theme=pygame_menu.themes.THEME_BLUE) #
-menu.add.button('Play', start_the_game)                     # взято из документации
-menu.add.button('Quit', pygame_menu.events.EXIT)            # к pygame-menu
-menu.mainloop(screen)                                       #
+if __name__ == '__main__':
+    pygame.init()
+
+    SIZE_BLOCK = 20
+    FRAME_COLOR = (128, 128, 128)
+    WHITE = (255, 255, 255)
+    BLUE = (204, 255, 255)
+    RED = (224, 0, 0)
+    COUNT_BLOCKS = 20
+    HEADER_COLOR = (47, 53, 60)
+    SNAKE_COLOR = (0, 102, 0)
+    HEADER_MARGIN = 70
+    MARGIN = 1
+    size = [SIZE_BLOCK * COUNT_BLOCKS + 2 * SIZE_BLOCK + MARGIN * COUNT_BLOCKS,
+            SIZE_BLOCK * COUNT_BLOCKS + 2 * SIZE_BLOCK + MARGIN * COUNT_BLOCKS + HEADER_MARGIN]
+    print(size)
+    screen = pygame.display.set_mode(size)
+    pygame.display.set_caption('Змейка')
+    timer = pygame.time.Clock()
+    courier = pygame.font.SysFont('courier', 50)
+    menu = pygame_menu.Menu('Welcome', 400, 300,
+                            theme=pygame_menu.themes.THEME_BLUE)  #
+    menu.add.button('Play', start_the_game)  # взято из документации
+    menu.add.button('Quit', pygame_menu.events.EXIT)  # к pygame-menu
+    menu.mainloop(screen)  #
